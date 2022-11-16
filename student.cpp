@@ -42,7 +42,7 @@ void Student::setAge(int age) {this-> age = age;}
 void Student::setDays(const int days[]) {
     for (int i = 0; i < daysArraySize; i++) this->days[i] = days[i];
 }
-void Student::setDegreeType(DegreeType degreeType) {this->degreeType = degreeType;}
+void Student::setDegreeType(DegreeType dt) {this->degreeType = dt;}
 
 //Headers for console
 void Student::printHeader() {

@@ -17,14 +17,11 @@ public:
     Student* students[numStudents] = {nullptr, nullptr, nullptr, nullptr, nullptr}; //students == classRosterArray
 
 public:
-    Roster();
     //Parsing method
     void parse(string row);
 
-    static Roster** getStudents();
-
     //E3a
-    void add(string pID,
+    void add(string sID,
              string sFName,
              string sLName,
              string sEmail,

@@ -1,23 +1,9 @@
 #include "roster.h"
+#include <string>
+#include "DegreeType.h"
 
 
-using std::vector;
-using std::stringstream;
-using std::regex;
-
-const string studentData[] =
-
-        {
-        "A1,John,Smith,John1989@gm ail.com,20,30,35,40,SECURITY",
-        "A2,Suzan,Erickson,Erickson_1990@gmailcom,19,50,30,40,NETWORK",
-        "A3,Jack,Napoli,The_lawyer99yahoo.com,19,20,40,33,SOFTWARE",
-        "A4,Erin,Black,Erin.black@comcast.net,22,50,58,40,SECURITY",
-        "A5,Jarod,Schupp,jschup3@wgu.edu,21, 22,30,34,43,SOFTWARE"
-        };
-const int numStudents = 5; //constant for an array
-
-//Parsing method
-void Roster::parse(string studentdata)
+void Roster::parse(string studentdata)//parses each row
 {
 
     int rhs = studentdata.find(',');//find the comma, return index
@@ -54,21 +40,20 @@ void Roster::parse(string studentdata)
     lhs = rhs + 1;
     rhs = studentdata.find(",", lhs);
 
-    double p[3];
-    for (int i = 0; i < 3; i++)
-    {
-        lhs = rhs + 1;
-        rhs = studentdata.find(",", lhs);
-        p[i] = stod(studentdata.substr(lhs, rhs - lhs)); //stoi?
-    };
 
-    add(sID, sFName, sLName, sEmail, sAge, d1, d2, d3, DegreeType::SECURITY);
+    DegreeType SECURITY;
+    DegreeType NETWORK;
+    DegreeType SOFTWARE;
+
+    DegreeType dt  = SECURITY;
+
+    if (studentdata.at(lhs) == 'S' && studentdata.at(lhs + 1) == 'E') dt = SECURITY;
+    else if (studentdata.at(lhs) == 'S' && studentdata.at(lhs + 1) == 'O') dt = SOFTWARE;
+    else if (studentdata.at(lhs) == 'N') dt = NETWORK;
+
+    add(sID, sFName, sLName, sEmail, sAge, d1, d2, d3, dt);
 
 }
-/*
-Roster** Roster::getStudents() {
-    return Roster::numStudents;
-} // POSSIBLE REMOVEABLE */
 
 //Add Method
 void Roster::add(string sID, string sFirstName, string sLastName, string sEmail, int sAge, int sDay1, int sDay2, int sDay3, DegreeType dt){
@@ -150,15 +135,15 @@ bool Roster::removeStudentByID(string studentID)
 //Destructor
 Roster::~Roster()
 {
-    cout << "Destructor called!" << std::endl << std::endl;
+    cout << "Calling Destructor.." << endl << endl;
     for (int i=0; i < numStudents; i++)
     {
-        cout << "Removing student #" << i + 1 << std::endl;
+        cout << "Removing student #" << i + 1 << endl;
         delete students[i];
         students[i] = nullptr;
     }
 }
 
-Roster **Roster::getStudents() {
+/* Roster **Roster::getStudents() {
     return nullptr;
-}
+} */

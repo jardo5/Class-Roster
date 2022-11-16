@@ -5,8 +5,6 @@
 using std::string;
 using std::cout;
 using std::endl;
-using std::left;
-using std::setw;
 
 class Student {
 public:
