@@ -18,7 +18,7 @@ Student::Student(string studentID, string firstName, string lastName, string ema
     this->email = email;
     this->age = age;
     for (int i = 0; i < daysArraySize; i++) this->days[i] = days[i];
-    this-> degreeType = degreeType;
+    this->degreeType = degreeType;
 }
 
 //Destructor
@@ -31,7 +31,7 @@ string Student::getLastName() {return this->lastName;}
 string Student::getEmail() {return this->email;}
 int Student::getAge() {return this->age;}
 const int* Student::getDays() {return this->days;}
-DegreeType Student::getDegreeType() {return this->degreeType;}
+DegreeType Student::getDegreeType(){return this->degreeType;}
 
 //Setters
 void Student::setID(string ID) {this->studentID = ID;}
@@ -66,6 +66,6 @@ void Student::print() {
     cout << this->days[0] << '\t';
     cout << this->days[1] << '\t';
     cout << this->days[2] << '\t';
-    cout << degreeTypeStrings[(int)this->degreeType];
+    cout << degreeTypeStrings[this->getDegreeType()] << '\n';
     cout << endl;
 }

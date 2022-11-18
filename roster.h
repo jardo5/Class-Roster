@@ -1,20 +1,15 @@
 #pragma once
-#include <vector>
-#include <cstring>
-#include <string.h>
-#include <vector>
-#include <sstream>
-#include <regex>
+#include <stdio.h>
 
 #include "student.h"
 
 class Roster {
 public:
     int lastIndex = -1; //Starting below 0
-    const static int numStudents = 5;
+    const static int numclassRosterArray = 5;
 
     //initialization
-    Student* students[numStudents] = {nullptr, nullptr, nullptr, nullptr, nullptr}; //students == classRosterArray
+    Student* classRosterArray[numclassRosterArray];
 
 public:
     //Parsing method
@@ -31,11 +26,10 @@ public:
              int d3,
              DegreeType dt);
 
-    bool removeStudentByID(string studentID); //E3b
     void printAll(); //E3c
+    void printByDegreeType(DegreeType dt); //E3f
     void printAverageDays(string studentID); //E3d
     void printInvalidEmails(); //E3e
-    void printByDegreeType(DegreeType dt); //E3f
-
+    bool removeStudentByID(string studentID); //E3b
     ~Roster();
 };

@@ -1,6 +1,10 @@
+#pragma once
 #include <iostream>
 #include <iomanip>
 #include "DegreeType.h"
+#include <stdio.h>
+
+
 
 using std::string;
 using std::cout;
@@ -39,7 +43,7 @@ public:
     void setEmail(string email);
     void setAge(int age);
     void setDays(const int days[]);
-    void setDegreeType(DegreeType dt);
+    void setDegreeType(DegreeType dt);;
 
     static void printHeader();
 
